@@ -12,9 +12,9 @@ using System.Configuration;
 
 namespace test
 {
-    public partial class Form1 : Form
+    public partial class login_form : Form
     {
-        public Form1()
+        public login_form()
         {
             InitializeComponent();
         }
@@ -26,7 +26,11 @@ namespace test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            home_form anotherForm = new home_form();
+            //this.Hide();
+            anotherForm.Show();
+            //Application.ExitThread();
+
             string connecStr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
             // Console.WriteLine(strConnection);
             // string connecStr = "server=192.168.25.182;port=3307;database=test;user=root;password=123456";
