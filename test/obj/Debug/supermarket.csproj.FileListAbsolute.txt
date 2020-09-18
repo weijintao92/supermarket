@@ -31,3 +31,6 @@ D:\Seafile\私人资料库\C#\supermarket\test\obj\Debug\supermarket.csproj.Core
 D:\Seafile\私人资料库\C#\supermarket\test\obj\Debug\supermarket.csproj.CopyComplete
 D:\Seafile\私人资料库\C#\supermarket\test\obj\Debug\test.exe
 D:\Seafile\私人资料库\C#\supermarket\test\obj\Debug\test.pdb
+D:\Seafile\私人资料库\C#\supermarket\test\obj\Debug\test.register_form.resources
+D:\Seafile\私人资料库\C#\supermarket\test\obj\Debug\test.commodity.add_form.resources
+D:\Seafile\私人资料库\C#\supermarket\test\obj\Debug\test.commodity.type_form.resources
