@@ -101,6 +101,9 @@
             // box_state
             // 
             this.box_state.FormattingEnabled = true;
+            this.box_state.Items.AddRange(new object[] {
+            "启用",
+            "禁用"});
             this.box_state.Location = new System.Drawing.Point(64, 163);
             this.box_state.Name = "box_state";
             this.box_state.Size = new System.Drawing.Size(121, 20);
@@ -131,6 +134,7 @@
             this.Controls.Add(this.label1);
             this.Name = "add_form";
             this.Text = "新增商品";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

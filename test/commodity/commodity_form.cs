@@ -7,23 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using test.commodity;
 
-namespace test
+namespace test.commodity
 {
-    public partial class home_form : Form
+    public partial class commodity_form : Form
     {
-        public home_form()
+        public commodity_form()
         {
             InitializeComponent();
         }
 
-        //商品基础资料管理
-        private void btn_commodity_Click(object sender, EventArgs e)
+        //新增商品
+        private void btn_add_Click(object sender, EventArgs e)
         {
-            commodity_form commodity = new commodity_form();
+            add_form add_Form = new add_form();
             //this.Hide();
-            commodity.Show();
+            add_Form.Show();
         }
     }
 }

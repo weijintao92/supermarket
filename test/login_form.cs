@@ -125,6 +125,7 @@ namespace test
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                MessageBox.Show("数据库服务异常！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             }
             finally
             {
