@@ -98,6 +98,7 @@ namespace test
             if (txt_name.Text == "" || txt_pwd.Text == "")
             {
                 MessageBox.Show("账号和密码不能为空！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                return;
             }
 
 
