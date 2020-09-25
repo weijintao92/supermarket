@@ -54,7 +54,7 @@ namespace test.commodity
             try
             {
                 //conn.Open();
-                string sql_select = "select * from commodity_type where state = '正常'";
+                string sql_select = "select * from commodity_type where state = '启用'";
                 MySqlCommand mycmd = new MySqlCommand(sql_select, conn);
                 MySqlDataReader reader = mycmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
                 while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
@@ -64,6 +64,7 @@ namespace test.commodity
                     Console.WriteLine(reader.GetString("type"));//"userid"是数据库对应的列名，推荐这种方式
                     combox_tpye.Items.Add(reader.GetString("type"));
                 }
+                combox_tpye.SelectedIndex = 0;
 
             }
             catch (Exception ex)
@@ -76,7 +77,7 @@ namespace test.commodity
 
                 conn.Close();
             }
-            combox_tpye.SelectedIndex = 0;
+            
         }
 
         private void combox_state_SelectedIndexChanged(object sender, EventArgs e)

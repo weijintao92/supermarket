@@ -35,17 +35,20 @@
             this.button_previous = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmt_disable = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView
             // 
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(51, 56);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 23;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(536, 150);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_CellMouseDown);
@@ -84,7 +87,7 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.修改ToolStripMenuItem,
-            this.删除ToolStripMenuItem});
+            this.tmt_disable});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
@@ -95,12 +98,12 @@
             this.修改ToolStripMenuItem.Text = "修改";
             this.修改ToolStripMenuItem.Click += new System.EventHandler(this.修改ToolStripMenuItem_Click);
             // 
-            // 删除ToolStripMenuItem
+            // tmt_disable
             // 
-            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.删除ToolStripMenuItem.Text = "删除";
-            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
+            this.tmt_disable.Name = "tmt_disable";
+            this.tmt_disable.Size = new System.Drawing.Size(180, 22);
+            this.tmt_disable.Text = "禁用";
+            this.tmt_disable.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
             // commodity_form
             // 
@@ -128,6 +131,6 @@
         private System.Windows.Forms.Button button_previous;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 修改ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tmt_disable;
     }
 }

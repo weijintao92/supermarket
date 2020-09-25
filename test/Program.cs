@@ -17,7 +17,7 @@ namespace test
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new commodity_form());
+            Application.Run(new type_form());
         }
     }
 }

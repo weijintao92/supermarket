@@ -96,7 +96,6 @@ D:\github\supermarket\test\bin\Debug\Renci.SshNet.xml
 D:\github\supermarket\test\bin\Debug\System.Buffers.xml
 D:\github\supermarket\test\bin\Debug\System.Memory.xml
 D:\github\supermarket\test\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-D:\github\supermarket\test\obj\Debug\supermarket.csprojAssemblyReference.cache
 D:\github\supermarket\test\obj\Debug\test.bill_form.resources
 D:\github\supermarket\test\obj\Debug\test.commodity.add_form.resources
 D:\github\supermarket\test\obj\Debug\test.commodity.commodity_form.resources

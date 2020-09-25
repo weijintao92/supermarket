@@ -31,6 +31,7 @@ namespace test.commodity
         //private int record = 0;
         private void commodity_form_Load(object sender, EventArgs e)
         {
+            button_previous.Enabled = false;
             NewMethod();
             //DataTable dt = new DataTable();//建立个数据表
 
@@ -56,18 +57,35 @@ namespace test.commodity
             try
             {
                 //conn.Open();
-                string sql_select = string.Format("select * from commodity where state = '启用' LIMIT {0},{1}", start_count, page_size);
+                string sql_select = string.Format("select * from commodity LIMIT {0},{1}", start_count, page_size);
                 MySqlCommand mycmd = new MySqlCommand(sql_select, conn);
                 MySqlDataReader reader = mycmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
                 DataTable my_dt = new DataTable();
                 my_dt.Load(reader);
                 if(my_dt.Rows.Count == 0)
                 {
+                    MessageBox.Show("已经是最后一页了！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                     Console.WriteLine("未取到数据！");
                     button_next.Enabled = false;
                     return;
                 }
+                if (start_count > 0)
+                {
+                    button_previous.Enabled = true;
+
+                }
                 dataGridView.DataSource = my_dt;
+                DataGridView dgv = this.dataGridView;
+                dgv.Columns[0].HeaderText = "id";
+                dgv.Columns[1].HeaderText = "名称";
+                dgv.Columns[2].HeaderText = "编码";
+                dgv.Columns[3].HeaderText = "进价";
+                dgv.Columns[4].HeaderText = "售价";
+                dgv.Columns[5].HeaderText = "类型";
+                dgv.Columns[6].HeaderText = "数量";
+                dgv.Columns[7].HeaderText = "状态";
+                //隐藏
+                dgv.Columns[0].Visible = false;
             }
             catch (Exception ex)
             {
@@ -84,7 +102,7 @@ namespace test.commodity
         //下一页
         private void button1_Click(object sender, EventArgs e)
         {
-            button_previous.Enabled = true ;
+           
             start_count = start_count + page_size;
             NewMethod();
         }
@@ -134,6 +152,7 @@ namespace test.commodity
             Console.WriteLine(a);
         }
 
+        //禁用
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int index = dataGridView.CurrentRow.Index;    //取得选中行的索引
@@ -143,11 +162,13 @@ namespace test.commodity
             try
             {
                 //conn.Open();
-                string sql_insert = string.Format("delete from `commodity` where id = {0}", id);
+                string sql_insert = string.Format("UPDATE  commodity set state = '禁用' where id = {0}", id);
 
                 MySqlCommand mycmd2 = new MySqlCommand(sql_insert, conn);
                 mycmd2.ExecuteNonQuery();
-                MessageBox.Show("删除成功！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                MessageBox.Show("禁用成功！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                //删除dataGridView
+                dataGridView.Rows.RemoveAt(dataGridView.CurrentRow.Index);
 
             }
             catch (Exception ex)
