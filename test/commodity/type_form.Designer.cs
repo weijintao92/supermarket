@@ -68,11 +68,13 @@
             // 
             // type_view
             // 
+            this.type_view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.type_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.type_view.ContextMenuStrip = this.contextMenuStrip1;
             this.type_view.Location = new System.Drawing.Point(4, 134);
             this.type_view.Name = "type_view";
             this.type_view.RowTemplate.Height = 23;
-            this.type_view.Size = new System.Drawing.Size(240, 150);
+            this.type_view.Size = new System.Drawing.Size(270, 150);
             this.type_view.TabIndex = 3;
             this.type_view.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.type_view_CellMouseDown);
             // 
@@ -87,13 +89,13 @@
             // strip_update
             // 
             this.strip_update.Name = "strip_update";
-            this.strip_update.Size = new System.Drawing.Size(180, 22);
+            this.strip_update.Size = new System.Drawing.Size(100, 22);
             this.strip_update.Text = "修改";
             // 
             // strip_isable
             // 
             this.strip_isable.Name = "strip_isable";
-            this.strip_isable.Size = new System.Drawing.Size(180, 22);
+            this.strip_isable.Size = new System.Drawing.Size(100, 22);
             this.strip_isable.Text = "禁用";
             this.strip_isable.Click += new System.EventHandler(this.strip_isable_Click);
             // 
@@ -108,6 +110,7 @@
             this.Controls.Add(this.label1);
             this.Name = "type_form";
             this.Text = "商品类型";
+            this.Load += new System.EventHandler(this.type_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.type_view)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);

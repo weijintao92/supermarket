@@ -109,3 +109,4 @@ D:\github\supermarket\test\obj\Debug\supermarket.csproj.CoreCompileInputs.cache
 D:\github\supermarket\test\obj\Debug\supermarket.csproj.CopyComplete
 D:\github\supermarket\test\obj\Debug\test.exe
 D:\github\supermarket\test\obj\Debug\test.pdb
+D:\github\supermarket\test\obj\Debug\supermarket.csprojAssemblyReference.cache
