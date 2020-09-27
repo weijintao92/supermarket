@@ -9,13 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using supermarket.my_calss;
+using supermarket.Model;
 using supermarket.commodity;
 
 namespace supermarket.commodity
 {
-    public partial class type_form : Form
+    public partial class commodity_type_form : Form
     {
-        public type_form()
+        public commodity_type_form()
         {
             InitializeComponent();
         }
@@ -81,15 +82,11 @@ namespace supermarket.commodity
             }
         }
 
-        private void type_view_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-        }
-
         //窗体加载
         private void type_form_Load(object sender, EventArgs e)
         {
             NewMethod();
+            dataGridView.Rows[0].Selected = true;//默认选中第一行
         }
 
         private void NewMethod()
@@ -135,34 +132,36 @@ namespace supermarket.commodity
             //DataGridViewCell cell = dataGridView.Rows[index].Cells[1];
             //dataGridView.CurrentCell = cell;
             //dataGridView.BeginEdit(true);
-            int index = dataGridView.CurrentRow.Index;    //取得选中行的索引
-            string id = dataGridView.Rows[index].Cells["Id"].Value.ToString();
-            string type = dataGridView.Rows[index].Cells["type"].Value.ToString();
-            string state = dataGridView.Rows[index].Cells["state"].Value.ToString();
-            supermarket.my_calss.GlobalData.passData = type;//保存传递的字符串
-            commodity_type_update_form from = new commodity_type_update_form();
-
+            //int index22 = dataGridView.CurrentCell.RowIndex;
+            //if (index22 != -1)//判断是否选中某行
+            //{
+            //    MessageBox.Show("请鼠标左键单击，要修改的数据！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            //    return;
+            //}
+            Console.WriteLine(dataGridView.SelectedRows.Count);
+              
+            //int index = dataGridView.CurrentRow.Index;    //取得选中行的索引
+            //string id = dataGridView.Rows[index].Cells["Id"].Value.ToString();
+            //string type = dataGridView.Rows[index].Cells["type"].Value.ToString();
+            //string state = dataGridView.Rows[index].Cells["state"].Value.ToString();
+            ////Commodity_Type commodity_Type = new Commodity_Type();
+            ////commodity_Type.Type = type;//保存传递的字符串
+            ////commodity_Type.Id = id ;//保存传递的字符串
+            ////commodity_Type.State = state;//保存传递的字符串
+            ////定义一个键值对集合
+            //Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            ////添加键值对数据,键必须唯一,值可重复
+            //dictionary.Add("id", id);
+            //dictionary.Add("type",type);
+            //dictionary.Add("state",state);
+            //commodity_type_update_form from = new commodity_type_update_form(dictionary);
+            //from.Show();
 
         }
 
-        private void btn_save_Click_1(object sender, EventArgs e)
+        private void dataGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-
-        }
-
-        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //dataGridView.ReadOnly = true;
-        }
-
-        private void dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            dataGridView.ReadOnly = true;
-        }
-
-        private void dataGridView_CellLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            Console.WriteLine(33333333333);
+            
         }
     }
 }

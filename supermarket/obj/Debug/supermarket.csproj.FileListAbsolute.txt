@@ -138,7 +138,6 @@ D:\github\supermarket\supermarket\bin\Debug\System.Runtime.CompilerServices.Unsa
 D:\github\supermarket\supermarket\obj\Debug\test.bill_form.resources
 D:\github\supermarket\supermarket\obj\Debug\supermarket.commodity.add_form.resources
 D:\github\supermarket\supermarket\obj\Debug\supermarket.commodity.commodity_form.resources
-D:\github\supermarket\supermarket\obj\Debug\supermarket.commodity.type_form.resources
 D:\github\supermarket\supermarket\obj\Debug\supermarket.home_form.resources
 D:\github\supermarket\supermarket\obj\Debug\supermarket.login_form.resources
 D:\github\supermarket\supermarket\obj\Debug\supermarket.Properties.Resources.resources
@@ -148,3 +147,5 @@ D:\github\supermarket\supermarket\obj\Debug\supermarket.csproj.CoreCompileInputs
 D:\github\supermarket\supermarket\obj\Debug\supermarket.csproj.CopyComplete
 D:\github\supermarket\supermarket\obj\Debug\supermarket.exe
 D:\github\supermarket\supermarket\obj\Debug\supermarket.pdb
+D:\github\supermarket\supermarket\obj\Debug\supermarket.commodity.commodity_type_form.resources
+D:\github\supermarket\supermarket\obj\Debug\supermarket.commodity.commodity_type_update_form.resources

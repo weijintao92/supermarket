@@ -1,6 +1,6 @@
 ﻿namespace supermarket.commodity
 {
-    partial class type_form
+    partial class commodity_type_form
     {
         /// <summary>
         /// Required designer variable.
@@ -77,14 +77,12 @@
             this.dataGridView.Location = new System.Drawing.Point(12, 134);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 23;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(358, 150);
             this.dataGridView.TabIndex = 3;
-            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
-            this.dataGridView.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellLeave);
-            this.dataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_CellMouseDoubleClick);
-            this.dataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.type_view_CellMouseDown);
+            this.dataGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellMouseEnter);
             // 
             // contextMenuStrip1
             // 
@@ -97,7 +95,7 @@
             // strip_update
             // 
             this.strip_update.Name = "strip_update";
-            this.strip_update.Size = new System.Drawing.Size(180, 22);
+            this.strip_update.Size = new System.Drawing.Size(100, 22);
             this.strip_update.Text = "编辑";
             this.strip_update.Click += new System.EventHandler(this.strip_update_Click);
             // 
@@ -108,7 +106,7 @@
             this.strip_isable.Text = "禁用";
             this.strip_isable.Click += new System.EventHandler(this.strip_isable_Click);
             // 
-            // type_form
+            // commodity_type_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -117,7 +115,7 @@
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.txt_type);
             this.Controls.Add(this.label1);
-            this.Name = "type_form";
+            this.Name = "commodity_type_form";
             this.Text = "商品类型";
             this.Load += new System.EventHandler(this.type_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
