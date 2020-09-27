@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\test\\commodity",
+    "\\test\\Properties"
   ],
+  "SelectedNode": "\\test",
   "PreviewInSolutionExplorer": false
 }
