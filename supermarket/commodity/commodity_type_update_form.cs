@@ -47,6 +47,8 @@ namespace supermarket.commodity
                 MessageBox.Show("修改成功！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                 //删除dataGridView
                 //dataGridView.Rows.RemoveAt(dataGridView.CurrentRow.Index);
+                commodity_type_form commodity_Type_Form = (commodity_type_form)this.Owner;
+                commodity_Type_Form.NewMethod();
                 this.Dispose();
 
             }

@@ -162,6 +162,9 @@
     <EmbeddedResource Include="commodity\commodity_type_update_form.resx">
       <DependentUpon>commodity_type_update_form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="edit_form.resx">
+      <DependentUpon>edit_form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="home_form.resx">
       <DependentUpon>home_form.cs</DependentUpon>
     </EmbeddedResource>

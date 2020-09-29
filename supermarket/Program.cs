@@ -17,7 +17,7 @@ namespace supermarket
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new commodity_type_form());
+            Application.Run(new home_form());
         }
     }
 }

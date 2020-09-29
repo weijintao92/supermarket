@@ -86,10 +86,10 @@ namespace supermarket.commodity
         private void type_form_Load(object sender, EventArgs e)
         {
             NewMethod();
-            dataGridView.Rows[0].Selected = true;//默认选中第一行
+            //dataGridView.Rows[0].Selected = true;//默认选中第一行
         }
 
-        private void NewMethod()
+        public void NewMethod()
         {
             MySqlConnection conn = my_public.mysql_con();
             try
@@ -138,30 +138,35 @@ namespace supermarket.commodity
             //    MessageBox.Show("请鼠标左键单击，要修改的数据！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             //    return;
             //}
-            Console.WriteLine(dataGridView.SelectedRows.Count);
-              
-            //int index = dataGridView.CurrentRow.Index;    //取得选中行的索引
-            //string id = dataGridView.Rows[index].Cells["Id"].Value.ToString();
-            //string type = dataGridView.Rows[index].Cells["type"].Value.ToString();
-            //string state = dataGridView.Rows[index].Cells["state"].Value.ToString();
-            ////Commodity_Type commodity_Type = new Commodity_Type();
-            ////commodity_Type.Type = type;//保存传递的字符串
-            ////commodity_Type.Id = id ;//保存传递的字符串
-            ////commodity_Type.State = state;//保存传递的字符串
-            ////定义一个键值对集合
-            //Dictionary<string, string> dictionary = new Dictionary<string, string>();
-            ////添加键值对数据,键必须唯一,值可重复
-            //dictionary.Add("id", id);
-            //dictionary.Add("type",type);
-            //dictionary.Add("state",state);
-            //commodity_type_update_form from = new commodity_type_update_form(dictionary);
-            //from.Show();
+            Console.WriteLine();
 
+            int index = dataGridView.CurrentRow.Index;    //取得选中行的索引
+            string id = dataGridView.Rows[index].Cells["Id"].Value.ToString();
+            string type = dataGridView.Rows[index].Cells["type"].Value.ToString();
+            string state = dataGridView.Rows[index].Cells["state"].Value.ToString();
+            //Commodity_Type commodity_Type = new Commodity_Type();
+            //commodity_Type.Type = type;//保存传递的字符串
+            //commodity_Type.Id = id ;//保存传递的字符串
+            //commodity_Type.State = state;//保存传递的字符串
+            //定义一个键值对集合
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            //添加键值对数据,键必须唯一,值可重复
+            dictionary.Add("id", id);
+            dictionary.Add("type", type);
+            dictionary.Add("state", state);
+            commodity_type_update_form from = new commodity_type_update_form(dictionary);
+            from.Owner = this;
+            from.Show();
+            
         }
 
-        private void dataGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+            Console.WriteLine(e.RowIndex);
+            if (e.RowIndex != -1)
+            {
+                this.dataGridView.CurrentCell = this.dataGridView.Rows[e.RowIndex].Cells[1];
+            }
         }
     }
 }

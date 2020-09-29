@@ -149,3 +149,5 @@ D:\github\supermarket\supermarket\obj\Debug\supermarket.exe
 D:\github\supermarket\supermarket\obj\Debug\supermarket.pdb
 D:\github\supermarket\supermarket\obj\Debug\supermarket.commodity.commodity_type_form.resources
 D:\github\supermarket\supermarket\obj\Debug\supermarket.commodity.commodity_type_update_form.resources
+D:\github\supermarket\supermarket\obj\Debug\supermarket.csprojAssemblyReference.cache
+D:\github\supermarket\supermarket\obj\Debug\test.edit_form.resources

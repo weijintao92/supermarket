@@ -51,5 +51,27 @@ namespace supermarket.my_calss
 
             return conn;
         }
+
+
+        //判断输入的内容是否为中文汉字
+        public static bool IsChina(string CString)
+        {
+            bool BoolValue = false;
+            for (int i = 0; i < CString.Length; i++)
+            {
+                if (Convert.ToInt32(Convert.ToChar(CString.Substring(i, 1))) < Convert.ToInt32(Convert.ToChar(128)))
+                {
+                    BoolValue = false;
+                    //Console.WriteLine("非汉字");
+                }
+                else
+                {
+                    BoolValue = true;
+                    //Console.WriteLine("汉字");
+                    break;
+                }
+            }
+            return BoolValue;
+        }
     }
 }
