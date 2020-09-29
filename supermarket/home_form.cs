@@ -30,8 +30,18 @@ namespace supermarket
             commodity.Show();
         }
 
+        private DataTable dt = new DataTable("commodity");
         private void home_form_Load(object sender, EventArgs e)
         {
+            dt.Columns.Add("id");
+            dt.Columns.Add("barcode");
+            dt.Columns.Add("name");
+            dt.Columns.Add("number");
+            dt.Columns.Add("out_price");
+            dt.Columns.Add("total");
+            
+
+
             txt_condition.Text = mytt;
 
 
@@ -40,6 +50,12 @@ namespace supermarket
             id.DataPropertyName = "id";
             id.HeaderText = "id";
             dataGridView.Columns.Add(id);
+
+            DataGridViewTextBoxColumn barcode = new DataGridViewTextBoxColumn();
+            barcode.Name = "barcode";
+            barcode.DataPropertyName = "barcode";
+            barcode.HeaderText = "条码";
+            dataGridView.Columns.Add(barcode);
 
             DataGridViewTextBoxColumn name = new DataGridViewTextBoxColumn();
             name.Name = "name";
@@ -65,6 +81,7 @@ namespace supermarket
             total.DataPropertyName = "total";
             total.HeaderText = "合计";
             dataGridView.Columns.Add(total);
+
             //int index = dataGridView>colum.Add();
             //this.dataGridView.Rows[index].Cells[0].Value = reader.GetInt32("id");
             //this.dataGridView.Rows[index].Cells[1].Value = reader.GetString("name");
@@ -98,18 +115,26 @@ namespace supermarket
             txt_condition.Text = mytt;
         }
 
+
+
         private void txt_condition_TextChanged(object sender, EventArgs e)
         {
+            
             //判断是否输入
             if (txt_condition.Text == "" || txt_condition.Text == mytt)
             {
                 return;
             }
-              
+            
+
             //判断是否为汉字
             if (my_public.IsChina(txt_condition.Text))
             {
-               
+                if (txt_condition.Text.Length <= 2)
+                {
+                    Console.WriteLine("长度小于5！");
+                    return;
+                }
                 Console.WriteLine("输入结果为汉字！");
             }
             //字符串 条码
@@ -120,7 +145,34 @@ namespace supermarket
                 //    Console.WriteLine("长度小于5！");
                 //    return;
                 //}
+                txt_condition.SelectAll();
                 //Console.WriteLine(444444444444444);
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow[] drArr = dt.Select(string.Format("barcode = '{0}'", txt_condition.Text));
+                    if (drArr.Length > 1)
+                    {
+                        MessageBox.Show("出错了，请重新录入订单！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        dt.Clear();
+                        return;
+                    }
+                    if (drArr.Length == 1)
+                    {
+                        drArr[0]["number"] = 1 + Convert.ToInt32(drArr[0]["number"]);
+                        drArr[0]["total"] =  Convert.ToInt32(drArr[0]["number"])* Convert.ToDouble(drArr[0]["out_price"]);
+                        //DataTable table = (DataTable)dataGridView.DataSource;
+                        //table.Clear();
+                        dataGridView.DataSource = dt;
+
+                        Double my_total = 0;
+                        foreach (DataRow ite33m in dt.Rows)
+                        {
+                            my_total = my_total + Convert.ToDouble(ite33m["total"]);
+                        }
+                        txt_total.Text = my_total.ToString();
+                        return;
+                    }
+                }
                 string connecStr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
 
                 MySqlConnection conn = new MySqlConnection(connecStr);
@@ -133,30 +185,31 @@ namespace supermarket
                     reader = mycmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
                     if (!reader.HasRows)
                     {
-                        MessageBox.Show("此商品不存在！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("此商品不存在，请维护商品基础资料！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
-                    int my_coutn = 0;
-                    DataTable dt = new DataTable("commodity");
-                    dt.Columns.Add("id");
-                    dt.Columns.Add("name");
-                    dt.Columns.Add("out_price");
-                    dt.Columns.Add("number");
-
+                    DataTable dt_temp = dt.Clone();
 
                     while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
                     {
-                        dt.Rows.Add(reader.GetInt32("id"), reader.GetString("name"), reader.GetString("out_price"));
-                        my_coutn = my_coutn + 1;
-                        //Console.WriteLine(reader[0].ToString() + reader[1].ToString() + reader[2].ToString());
-                        //Console.WriteLine(reader.GetInt32(0)+reader.GetString(1)+reader.GetString(2));
-                        //Console.WriteLine(reader.GetInt32("userid") + reader.GetString("username") + reader.GetString("password"));//"userid"是数据库对应的列名，推荐这种方式
-                        int index = dataGridView.Rows.Add();
-                        this.dataGridView.Rows[index].Cells[0].Value = reader.GetInt32("id");
-                        this.dataGridView.Rows[index].Cells[1].Value = reader.GetString("name");
-                        this.dataGridView.Rows[index].Cells[2].Value = reader.GetString("out_price");
+                        dt_temp.Rows.Add(reader.GetInt32("id"), reader.GetString("barcode"), reader.GetString("name"), 1, reader.GetString("out_price"), reader.GetString("out_price"));
                     }
+                    if (dt_temp.Rows.Count > 1)
+                    {
+                        dt_temp.Clear();
+                        MessageBox.Show("此商品条码重复，请维护商品基础资料！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                    dt.Rows.Add(dt_temp.Rows[0].ItemArray);
 
+                    dataGridView.DataSource = dt;
+
+                    Double my_total = 0;
+                    foreach (DataRow ite33m in dt.Rows)
+                    {
+                        my_total = my_total + Convert.ToDouble(ite33m["total"]);
+                    }
+                    txt_total.Text = my_total.ToString();
                     //if (my_coutn !=1) {
                     //    MessageBox.Show("此商品条码重复！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     //    return;
